@@ -877,7 +877,7 @@ const S_LED_LIGHT pattern_common[]=
 	'2',1,'w',1,'s',1,'x',1,'=',1, '[',1,';',1,'.',1, 1,1
 };
 
-void led_prompt(void)
+void led_common(void)
 {
 	if (led_delay)
 	{
