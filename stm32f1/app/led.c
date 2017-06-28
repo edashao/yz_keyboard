@@ -232,6 +232,8 @@ void led_txwgwkbp(void)
 	}
 }
 ////////////////////////////////////////////////////////////////////
+
+/*
 S_LED_LIGHT pattern_loveqyj[]= //呼吸部分,最快
 {
 'E',1,'T',1,'C',1,'z',1,'S',1, 'r',1,'d',1,'c',1,'v',1,'g',1,'t',1, 'y',1,'h',1,'n',1,'j',1,'i',1, 'p',1,'l',1,'[',1,'.',1,';',1,'\'',1,'/',1, 1,2,
@@ -875,7 +877,7 @@ const S_LED_LIGHT pattern_common[]=
 	'2',1,'w',1,'s',1,'x',1,'=',1, '[',1,';',1,'.',1, 1,1
 };
 
-void led_common(void)
+void led_prompt(void)
 {
 	if (led_delay)
 	{
@@ -885,8 +887,66 @@ void led_common(void)
 	led_delay=led_set_pattern((S_LED_LIGHT*)pattern_common,sizeof(pattern_common)/sizeof(S_LED_LIGHT));
 	led_delay=led_delay*(1+1/(0.25+keys_per_sec_f));
 }
+*/
+
 ////////////////////////////////////////////////////////////////////
-void (*led_fun)(void)=led_common;
+
+const S_LED_LIGHT pattern_prompt[]=
+{
+	'f',1,'j',1, 1,1,
+	'f',2,'j',2, 1,1,
+	'f',3,'j',3, 1,1,
+	'f',4,'j',4, 1,1,
+	'f',5,'j',5, 1,1,
+	'f',6,'j',6, 1,1,
+	'f',7,'j',7, 1,1,
+	'f',8,'j',8, 1,1,
+	'f',9,'j',9, 1,1,
+	'f',10,'j',10, 1,1,
+	'f',11,'j',11, 1,1,
+	'f',12,'j',12, 1,1,
+	'f',13,'j',13, 1,1,
+	'f',14,'j',14, 1,1,
+	'f',15,'j',15, 1,1,
+	'f',16,'j',16, 1,1,
+	'f',17,'j',17, 1,1,
+	'f',18,'j',18, 1,1,
+	'f',19,'j',19, 1,1,
+	'f',20,'j',20, 1,1,
+	'f',19,'j',19, 1,1,
+	'f',18,'j',18, 1,1,
+	'f',17,'j',17, 1,1,
+	'f',16,'j',16, 1,1,
+	'f',15,'j',15, 1,1,
+	'f',14,'j',14, 1,1,
+	'f',13,'j',13, 1,1,
+	'f',12,'j',12, 1,1,
+	'f',11,'j',11, 1,1,
+	'f',10,'j',10, 1,1,
+	'f',9,'j',9, 1,1,
+	'f',8,'j',8, 1,1,
+	'f',7,'j',7, 1,1,
+	'f',6,'j',6, 1,1,
+	'f',5,'j',5, 1,1,
+	'f',4,'j',4, 1,1,
+	'f',3,'j',3, 1,1,
+	'f',2,'j',2, 1,1,
+	'f',1,'j',1, 1,1,
+	
+};
+
+void led_prompt(void)
+{
+	if (led_delay)
+	{
+		led_delay--;
+		return ;
+	}
+	led_delay=led_set_pattern((S_LED_LIGHT*)pattern_prompt,sizeof(pattern_prompt)/sizeof(S_LED_LIGHT));
+	led_delay=led_delay*(1+1/(0.25+keys_per_sec_f));
+}
+////////////////////////////////////////////////////////////////////
+void (*led_fun)(void)=led_prompt;
 void led_poll(void) //100Hz
 {
 	led_fun();
